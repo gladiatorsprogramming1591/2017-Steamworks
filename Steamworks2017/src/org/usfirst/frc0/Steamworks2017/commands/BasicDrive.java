@@ -14,7 +14,7 @@ package org.usfirst.frc0.Steamworks2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc0.Steamworks2017.Robot;
 
-/**
+/*
  *
  */
 public class BasicDrive extends Command {
@@ -61,7 +61,6 @@ public class BasicDrive extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return (m_timer && isTimedOut());
-        
     }
 
     // Called once after isFinished returns true
@@ -72,7 +71,6 @@ public class BasicDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
     	end();
     }
 }
