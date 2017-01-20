@@ -76,9 +76,9 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
+    
+     //This function is called periodically during autonomous
+     
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
@@ -91,16 +91,16 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
+    
+     // This function is called periodically during operator control
+   
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 
-    /**
-     * This function is called periodically during test mode
-     */
+    
+     // This function is called periodically during test mode
+    
     public void testPeriodic() {
         LiveWindow.run();
     }
