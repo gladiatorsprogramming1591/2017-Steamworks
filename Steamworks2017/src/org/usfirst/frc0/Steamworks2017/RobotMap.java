@@ -61,7 +61,8 @@ public class RobotMap {
         driveTrainRobotDrive.setExpiration(0.1);
         driveTrainRobotDrive.setSensitivity(0.5);
         driveTrainRobotDrive.setMaxOutput(1.0);
-
+        driveTrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        driveTrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         armCANArm = new CANTalon(1);
         LiveWindow.addActuator("Arm", "CANArm", armCANArm);
         
