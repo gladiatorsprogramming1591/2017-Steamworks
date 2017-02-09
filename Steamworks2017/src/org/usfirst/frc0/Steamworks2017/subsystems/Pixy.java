@@ -5,13 +5,13 @@ import edu.wpi.first.wpilibj.SerialPort.Port;
 //Warning: if the pixy is plugged in through mini usb, this code WILL NOT WORK b/c the pixy is smart and detects where it should send data
 public class Pixy {
 	SerialPort pixy;
-	Port port = Port.kMXP;
+	Port port = Port.kOnboard;
 	PixyPacket[] packets;
 	PixyException pExc;
 	String print;
 	public Pixy() {
 		pixy = new SerialPort(19200, port);
-		pixy.setReadBufferSize(14);
+		pixy.setReadBufferSize(32);
 		packets = new PixyPacket[7];
 		pExc = new PixyException(print);
 	}
@@ -32,11 +32,12 @@ public class Pixy {
 		} catch (RuntimeException e){
 		}
 		if(rawData.length < 32){
-			System.out.println("byte array length is broken");
+			System.out.println("byte array length is broken, length = " + rawData.length);
 			return null;
 		}
 		for (int i = 0; i <= 16; i++) {
 			int syncWord = cvt(rawData[i+1], rawData[i+0]); //Parse first 2 bytes
+			System.out.println("Sync Word = " + syncWord);
 			if (syncWord == 0xaa55) { //Check is first 2 bytes equal a "sync word", which indicates the start of a packet of valid data
 				syncWord = cvt(rawData[i+3], rawData[i+2]); //Parse the next 2 bytes
 				if (syncWord != 0xaa55){ //Shifts everything in the case that one syncword is sent

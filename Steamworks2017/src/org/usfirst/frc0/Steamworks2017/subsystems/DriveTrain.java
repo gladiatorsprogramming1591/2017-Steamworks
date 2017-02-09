@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -59,69 +60,76 @@ public class DriveTrain extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 
-		cANTalonBR.changeControlMode(BasicDrive.Position); //Change control mode of talon, default is PercentVbus (-1.0 to 1.0)
-		cANTalonBR.setFeedbackDevice(FeedbackDevice.QuadEncoder); //Set the feedback device that is hooked up to the talon
-		cANTalonBR.setPID(0.5, 0.001, 0.0); //Set the PID constants (p, i, d)
-		cANTalonBR.enableControl(); //Enable PID control on the talon
-		System.out.println();
 
-		encoderBR.get();
-		encoderBR.getRaw();
-		double distance = encoderBR.getDistance();
-		double rate = encoderBR.getRate();
-		boolean direction = encoderBR.getDirection();
-		boolean stopped = encoderBR.getStopped();
 	}
-	{
-		cANTalonBL.changeControlMode(BasicDrive.Position); //Change control mode of talon, default is PercentVbus (-1.0 to 1.0)
-		cANTalonBL.setFeedbackDevice(FeedbackDevice.QuadEncoder); //Set the feedback device that is hooked up to the talon
-		cANTalonBL.setPID(0.5, 0.001, 0.0); //Set the PID constants (p, i, d)
-		cANTalonBL.enableControl(); //Enable PID control on the talon
-		System.out.println();
+	 
+	
+	private double encoderBR() {
+		
+	    	return encoderBR.getRate();
+	    }
 
-		encoderBL.get();
-		encoderBL.getRaw();
-		double distance = encoderBL.getDistance();
-		double rate = encoderBL.getRate();
-		boolean direction = encoderBL.getDirection();
-		boolean stopped = encoderBL.getStopped();
+	    public double getDistanceBR() {
+	    	return encoderBR.getDistance();
+	    }
+	    
+	    public double getRawBR() {
+	    	return encoderBR.getRaw();
+	    };
+	//EncoderBR method declaration for live window
+	private double encoderBL() {
+		
+
+	    	return encoderBL.getRate();
+	    }
+
+	    public double getDistanceBL() {
+	    	return encoderBL.getDistance();
+	    }
+	    
+	    public double getRawBL() {
+	    	return encoderBL.getRaw();
+	    }
+	 //EncoderBL method declaration for live window
+	private double encoderFR() {
+		
+	    	return encoderFR.getRate();
+	    }
+
+	    public double getDistanceFR() {
+	    	return encoderFR.getDistance();
+	    }
+	    
+	    public double getRawFR() {
+	    	return encoderFR.getRaw();
+	    };
+	//EncoderFR method declaration for live window
+	private double encoderFL() {
+		// TODO Auto-generated method stub
+	    	return encoderFL.getRate();
+	    }
+
+	    public double getDistanceFL() {
+	    	return encoderFL.getDistance();
+	    }
+	    
+	    public double getRawFL() {
+	    	return encoderFL.getRaw();
+	    };
+	//EncoderFL method declaration for live window
+	  
+	
+  //Read encoders in smartdashboard
+   
+    public void execute() {
+    	SmartDashboard.getNumber("encoderBR",encoderBR());
+    	SmartDashboard.getNumber("encoderBL",encoderBL());
+    	SmartDashboard.getNumber("encoderFR", encoderFR());
+    	SmartDashboard.getNumber("encoderFL", encoderFL());
 	}
-	{
-		cANTalonFR.changeControlMode(BasicDrive.Position); //Change control mode of talon, default is PercentVbus (-1.0 to 1.0)
-		cANTalonFR.setFeedbackDevice(FeedbackDevice.QuadEncoder); //Set the feedback device that is hooked up to the talon
-		cANTalonFR.setPID(0.5, 0.001, 0.0); //Set the PID constants (p, i, d)
-		cANTalonFR.enableControl(); //Enable PID control on the talon
-		System.out.println();
-
-		encoderFR.get();
-		encoderFR.getRaw();
-		double distance = encoderFR.getDistance();
-		double rate = encoderFR.getRate();
-		boolean direction = encoderFR.getDirection();
-		boolean stopped = encoderFR.getStopped();
-	}
-	{
-		cANTalonFL.changeControlMode(TalonControlMode.Position); //Change control mode of talon, default is PercentVbus (-1.0 to 1.0)
-		cANTalonFL.setFeedbackDevice(FeedbackDevice.QuadEncoder); //Set the feedback device that is hooked up to the talon
-		cANTalonFL.setPID(0.5, 0.001, 0.0); //Set the PID constants (p, i, d)
-		cANTalonFL.enableControl(); //Enable PID control on the talon
-
-		encoderFL.get();
-		encoderFL.getRaw();
-		double distance = encoderFL.getDistance();
-		double rate = encoderFL.getRate();
-		boolean direction = encoderFL.getDirection();
-		boolean stopped = encoderFL.getStopped();
-	}
-
-
+ 
 	public void driving(double driveX, double driveY, double rotation) {
 		robotDrive.mecanumDrive_Cartesian(driveX, driveY, rotation, 0);
-	}
-
-	private void encoderFR (int i, int j, boolean b, EncodingType k4x) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void autoDrive(double magnitude, double direction, double rotation) {
