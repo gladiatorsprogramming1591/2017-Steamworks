@@ -43,6 +43,7 @@ public class RunWinchNRevolutions extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("Revolutions = " + m_Revolutions);
     	Robot.winch.winchControl(m_Revolutions);
     	m_executeCount = 0;
     	SmartDashboard.putNumber("Winch Velocity", Robot.winch.getWinchVelocity());
@@ -60,7 +61,7 @@ public class RunWinchNRevolutions extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.winch.getWinchVelocity() == 0;
+        return false;//return Robot.winch.getWinchVelocity() == 0;
     }
 
     // Called once after isFinished returns true
