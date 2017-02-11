@@ -50,7 +50,7 @@ public class Winch extends Subsystem {
 	public void winchControl(double m_PercentVBus){
 		winch.changeControlMode(TalonControlMode.PercentVbus); //Change control mode of talon, default is PercentVbus (-1.0 to 1.0)
 		winch.configEncoderCodesPerRev(25);//1024 per motor revolution x 100 motor revolutions per winch revolution
-		winch.setVoltageRampRate(6); //The voltage ramp rate per second is 6v
+		winch.setVoltageRampRate(12); //The voltage ramp rate per second is 6v
 		//winch.setAnalogPosition(-position); //Set analog position
 		winch.enableControl();
 		winch.set(m_PercentVBus);

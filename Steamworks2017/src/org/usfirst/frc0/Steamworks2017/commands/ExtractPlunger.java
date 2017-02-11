@@ -37,8 +37,10 @@ public class ExtractPlunger extends Command {
 	}
 
 	// Called just before this Command runs the first time
-	protected void initialize() {
-		Robot.gearPlunger.PlungerExtract();
+	protected void initialize() {	
+		if(!Robot.gearPlunger.IsIn()) {
+			Robot.gearPlunger.PlungerExtract();			
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -47,7 +49,7 @@ public class ExtractPlunger extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.gearPlunger.IsOpen();
+		return Robot.gearPlunger.IsIn();
 	}
 
 	// Called once after isFinished returns true

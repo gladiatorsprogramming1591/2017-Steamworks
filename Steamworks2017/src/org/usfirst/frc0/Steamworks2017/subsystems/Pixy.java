@@ -37,7 +37,7 @@ public class Pixy {
 		}
 		for (int i = 0; i <= 16; i++) {
 			int syncWord = cvt(rawData[i+1], rawData[i+0]); //Parse first 2 bytes
-			System.out.println("Sync Word = " + syncWord);
+			//System.out.println("Sync Word = " + syncWord);
 			if (syncWord == 0xaa55) { //Check is first 2 bytes equal a "sync word", which indicates the start of a packet of valid data
 				syncWord = cvt(rawData[i+3], rawData[i+2]); //Parse the next 2 bytes
 				if (syncWord != 0xaa55){ //Shifts everything in the case that one syncword is sent

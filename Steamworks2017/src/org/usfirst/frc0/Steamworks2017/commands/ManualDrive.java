@@ -45,7 +45,7 @@ public class ManualDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.driving(Robot.oi.driveStick.getX(),Robot.oi.driveStick.getY(), Robot.oi.rotateStick.getX());
+		Robot.driveTrain.driving(Robot.oi.driveStick.getX() / 3,Robot.oi.driveStick.getY() / 3, Robot.oi.rotateStick.getX() / 3);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
