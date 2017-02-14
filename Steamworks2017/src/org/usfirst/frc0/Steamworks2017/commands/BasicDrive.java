@@ -53,12 +53,12 @@ public class BasicDrive extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.driveTrain.autoDrive(m_speed, m_direction, m_rotation);
+		Robot.driveTrain.driving(m_speed, m_direction, m_rotation);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.autoDrive(m_speed, m_direction, m_rotation);
+		Robot.driveTrain.driving(m_speed, m_direction, m_rotation);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -68,7 +68,7 @@ public class BasicDrive extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.driveTrain.autoDrive(0, 0, 0);
+		Robot.driveTrain.driving(0, 0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
