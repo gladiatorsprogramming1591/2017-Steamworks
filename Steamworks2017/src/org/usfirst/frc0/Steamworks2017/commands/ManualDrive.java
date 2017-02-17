@@ -56,10 +56,19 @@ public class ManualDrive extends Command {
 			slow = false;
 			SmartDashboard.putBoolean("slow mode", false);
 		}
+		
+		//Polar
+//		if(Robot.oi.driveStick.getMagnitude() > .05 && !slow){
+//			Robot.driveTrain.driving(Robot.oi.driveStick.getMagnitude(),Robot.oi.driveStick.getDirectionDegrees(), Robot.oi.driveStick.getRawAxis(2));
+//		} else if((Robot.oi.driveStick.getMagnitude() > .05 && slow)){
+//			Robot.driveTrain.slowdrive(Robot.oi.driveStick.getMagnitude(),Robot.oi.driveStick.getDirectionDegrees(), Robot.oi.driveStick.getRawAxis(2));
+//		}
+		
+		//cartesian
 		if(Robot.oi.driveStick.getMagnitude() > .05 && !slow){
-			Robot.driveTrain.driving(Robot.oi.driveStick.getMagnitude(),Robot.oi.driveStick.getDirectionDegrees(), Robot.oi.driveStick.getRawAxis(2));
+			Robot.driveTrain.driving(Robot.oi.driveStick.getX(),Robot.oi.driveStick.getY(), Robot.oi.driveStick.getRawAxis(2));
 		} else if((Robot.oi.driveStick.getMagnitude() > .05 && slow)){
-			Robot.driveTrain.slowdrive(Robot.oi.driveStick.getMagnitude(),Robot.oi.driveStick.getDirectionDegrees(), Robot.oi.driveStick.getRawAxis(2));
+			Robot.driveTrain.slowdrive(Robot.oi.driveStick.getX(),Robot.oi.driveStick.getY(), Robot.oi.driveStick.getRawAxis(2));
 		}
 	}
 

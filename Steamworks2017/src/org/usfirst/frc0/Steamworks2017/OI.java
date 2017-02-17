@@ -57,6 +57,7 @@ public class OI {
     public JoystickButton flapOpenButton;
     public JoystickButton extractPlungerButton;
     public JoystickButton insertPlungerButton;
+    public JoystickButton RunWinchButton;
     public Joystick driveStick;
     public Joystick rotateStick;
 
@@ -68,7 +69,7 @@ public class OI {
         rotateStick = new Joystick(1);
         
         driveStick = new Joystick(0);
-        
+
         insertPlungerButton = new JoystickButton(driveStick, 1);
         insertPlungerButton.whenPressed(new InsertPlunger());
         extractPlungerButton = new JoystickButton(driveStick, 2);
@@ -77,11 +78,14 @@ public class OI {
         flapOpenButton.whenPressed(new FlapOpen());
         flapCloseButton = new JoystickButton(driveStick, 1);
         flapCloseButton.whenPressed(new FlapClose());
+        RunWinchButton = new JoystickButton(driveStick, 5);
+        RunWinchButton.whileHeld(new RunWinchPercentVBus(1));
 
 
         // SmartDashboard Buttons
         SmartDashboard.putData("BasicDrive: 5 sec 1/2 speed", new BasicDrive(true, 5, .5, 0, 0, 0));
-        SmartDashboard.putData("DriveFowardTest", new DriveFowardTest());
+        SmartDashboard.putData("DriveFowardTest: halfSpeed2sec", new DriveFowardTest(0.5, 2));
+        SmartDashboard.putData("DriveFowardTest: fullSpeed1sec", new DriveFowardTest(1, 1));
         SmartDashboard.putData("DriveBackwardTest", new DriveBackwardTest());
         SmartDashboard.putData("WinchUp: 5 sec 1/2 speed", new WinchUp(5, 0.5));
         SmartDashboard.putData("ManualDrive", new ManualDrive());
@@ -89,8 +93,6 @@ public class OI {
         SmartDashboard.putData("ExtractPlunger", new ExtractPlunger());
         SmartDashboard.putData("FlapClose", new FlapClose());
         SmartDashboard.putData("FlapOpen", new FlapOpen());
-        SmartDashboard.putData("ReadPixyPackets", new ReadPixyPackets());
-        SmartDashboard.putData("ResetPixy", new ResetPixy());
         SmartDashboard.putData("RunWinchPercentVBus: Half", new RunWinchPercentVBus(0.5));
         SmartDashboard.putData("RunWinchPercentVBus: ThreeQuarters", new RunWinchPercentVBus(0.75));
         SmartDashboard.putData("RunWinchPercentVBus: NegHalf", new RunWinchPercentVBus(-0.5));
