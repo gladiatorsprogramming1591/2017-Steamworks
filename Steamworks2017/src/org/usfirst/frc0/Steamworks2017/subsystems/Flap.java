@@ -52,7 +52,7 @@ public class Flap extends Subsystem {
 	}
 
 	public void OpenFlap(){
-		flapSC.set(-0.3);
+		flapSC.set(-0.5);
 	}
 
 	public void CloseFlap(){
