@@ -27,6 +27,7 @@ public class myDrive extends RobotDrive {
     static final int kFrontRight_val = 1;
     static final int kRearLeft_val = 2;
     static final int kRearRight_val = 3;
+	private static final double SCALEFACTOR = 1.2;
 
 	public myDrive(SpeedController frontLeftMotor, SpeedController rearLeftMotor, SpeedController frontRightMotor,
 			SpeedController rearRightMotor) {
@@ -38,7 +39,7 @@ public class myDrive extends RobotDrive {
 	    m_rearLeftMotor.set(bl);
 	    m_rearRightMotor.set(br);
 	}
-	
+
 	@Override
 	public void mecanumDrive_Cartesian(double x, double y, double rotation, double gyroAngle) {
 //	    if (!kMecanumCartesian_Reported) {
@@ -67,9 +68,9 @@ public class myDrive extends RobotDrive {
 
 	    normalize(wheelSpeeds);
 	    m_frontLeftMotor.set(wheelSpeeds[kFrontLeft_val] * m_maxOutput);
-	    m_frontRightMotor.set(wheelSpeeds[kFrontRight_val] * m_maxOutput);
+	    m_frontRightMotor.set(wheelSpeeds[kFrontRight_val] * m_maxOutput * SCALEFACTOR);
 	    m_rearLeftMotor.set(wheelSpeeds[kRearLeft_val] * m_maxOutput);
-	    m_rearRightMotor.set(wheelSpeeds[kRearRight_val] * m_maxOutput);
+	    m_rearRightMotor.set(wheelSpeeds[kRearRight_val] * m_maxOutput * SCALEFACTOR);
 	    
 //	    if (m_syncGroup != 0) {
 //	      CANTalon.FeedbackDeviceStatus;
