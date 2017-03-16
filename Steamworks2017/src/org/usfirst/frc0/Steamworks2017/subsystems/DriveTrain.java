@@ -47,7 +47,7 @@ public class DriveTrain extends Subsystem {
 	// here. Call these from Commands.
 	public RobotDrive myRobot;
 
-	public CameraServer server;
+	//public CameraServer server;
 
 //	public DriveTrain(){
 //		initializeCamera();
@@ -154,7 +154,7 @@ public class DriveTrain extends Subsystem {
 //	}
 	
 	public void driving(double x, double y, double rotation) {
-		robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
+		robotDrive.mecanumDrive_Cartesian(x / 1, y / 1, rotation / 3, 0);
 	}
 
 //	public void driveRaw(double fl, double fr, double bl, double br) {
@@ -162,8 +162,17 @@ public class DriveTrain extends Subsystem {
 //	}
 
 	public void slowdrive(double x, double y, double rotation) {
-		robotDrive.mecanumDrive_Cartesian(x / 2, y / 2, rotation / 2, 0);
+		robotDrive.mecanumDrive_Cartesian(x / 3, y / 3.5, rotation / 3.5, 0);
 	}
+	
+	public void reversedrive(double x, double y, double rotation) {
+		robotDrive.mecanumDrive_Cartesian(x / 1, y / 1, rotation / 3, 180);
+	}
+	
+	public void slowreversedrive(double x, double y, double rotation) {
+		robotDrive.mecanumDrive_Cartesian(x / 3, y / 3.5, rotation / 3.5, 180);
+	}
+	
 	public int getBLPosition(){
 		return cANTalonBL.getEncPosition();
 	}

@@ -37,7 +37,7 @@ public class BackFromGearLoad extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.driving(0, 0.5, 0);
+    	Robot.driveTrain.driving(0, 0.3, 0);
     	setTimeout(0.2);
     }
 

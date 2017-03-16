@@ -78,7 +78,7 @@ public class myDrive extends RobotDrive {
 
 	    if (m_safetyHelper != null)
 	      m_safetyHelper.feed();
-	  }
+	}
 	
 
 //	@Override
